@@ -606,7 +606,7 @@ function coverVideoIni() {
         if (mashiro_global.variables.has_hls){
             loadHls();
         }else{
-            $.getScript("https://cdn.jsdelivr.net/gh/mashirozx/Sakura@3.3.3/cdn/js/src/16.hls.js", function(){
+            $.getScript("https://cdn.jsdelivr.net/gh/ThunderstormsZJ/Sakura@3.3.3/cdn/js/src/16.hls.js", function(){
                 loadHls();
                 mashiro_global.variables.has_hls = true;
               });
@@ -643,7 +643,8 @@ function tableOfContentScroll(flag) {
                 tocSelector: '.toc',
                 contentSelector: ['.entry-content', '.links'],
                 headingSelector: 'h1, h2, h3, h4, h5',
-                headingsOffset: heading_fix - window.innerHeight / 2,
+                headingsOffset: (heading_fix - window.innerHeight / 2),
+                scrollSmoothOffset: -(heading_fix - window.innerHeight / 2)
             });
         }
     }
