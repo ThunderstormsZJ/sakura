@@ -1864,13 +1864,75 @@ var home = location.href,
             mb_dark_light.onclick = function() {
                 mobile_dark_light();
             }
+        },
+        RS: function(){
+            const $rightside = document.getElementById('rightside');
+            const innerHeight = window.innerHeight + 56;
+
+           if (document.body.scrollHeight <= innerHeight) {
+                $rightside.style.cssText = 'opacity: 0.7; transform: translateX(-58px)';
+                return;
+            }
+
+            $(window).scroll(function() {
+                var s = $(document).scrollTop();
+                if (s > 20){
+                    if (window.getComputedStyle($rightside).getPropertyValue('opacity') === '0') {
+                        $rightside.style.cssText = 'opacity: 0.7; transform: translateX(-58px)';
+                    }
+                }else{
+                    $rightside.style.cssText = "opacity: ''; transform: ''";
+                }
+
+                if (document.body.scrollHeight <= innerHeight) {
+                    $rightside.style.cssText = 'opacity: 0.7; transform: translateX(-58px)';
+                }
+            });
+
+            // Toc API
+            const $cardTocLayout = document.getElementById('toc-card')
+            const mobileToc = {
+                open: function() {
+                  $cardTocLayout.style.cssText = 'opacity: 1; right: 55px;'
+                },
+          
+                close: function() {
+                  $cardTocLayout.style.animation = ''
+                  setTimeout(() => {
+                    $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+                  }, 100)
+                },
+
+                switchToc: function() {
+                    if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0'){
+                        mobileToc.open();
+                    }else{
+                        mobileToc.close();
+                    }
+                }
+              }
+
+            // click event
+            document.getElementById('rightside').addEventListener('click', function (e) {
+                const $target = e.target.id || e.target.parentNode.id;
+                switch($target){
+                    case 'go-up':
+                        topFunction();
+                        break
+                    case 'mobile-toc-button':
+                        mobileToc.switchToc();
+                        break
+                }
+            });
+
         }
     }
 $(function () {
     Siren.AH();
     Siren.PE();
     Siren.NH();
-    Siren.GT();
+    // Siren.GT();
+    Siren.RS();
     Siren.XLS();
     Siren.XCS();
     Siren.XCP();
