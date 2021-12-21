@@ -5,7 +5,7 @@ Theme URI: https://github.com/mashirozx/Sakura/
 Author: Mashiro, Spirit, Louie, Fuzzz
 Author URI: http://2heng.xin
 Description: A wonderful branch of theme Akina
-Version: 3.4.2
+Version: 3.4.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sakura
@@ -1914,7 +1914,7 @@ h1.page-title.mb- {
     }
 }
 .post-footer {
-    padding: 20px 0;
+    padding: 27px 0;
     border-bottom: 1px dashed #ddd;
     border-top: 1px dashed #ddd;
     margin-top: 30px;
@@ -8540,8 +8540,8 @@ td.hljs-ln-numbers {
 h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id*=toc-head]::before,h5[id*=toc-head]::before,h6[id*=toc-head]::before {
 	display:block;
 	content:" ";
-	height:80px;
-	margin-top:-80px;
+	/* height:80px; */
+	/* margin-top:-80px; */
 	visibility:hidden
 }
 
@@ -8816,3 +8816,45 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
 .bangumi-next i {
     color: orange;
 }
+
+/* Rightside */
+
+#rightside {
+    position: fixed;
+    right: -48px;
+    bottom: 40px;
+    z-index: 100;
+    opacity: 0.7;
+    transform: translateX(-58px);
+    transition: all .5s;
+}
+
+#rightside #rightside-config-hide {
+    transition: transform .4s;
+    transform: translate(35px, 0);
+}
+
+#rightside #rightside-config-hide .show {
+    transform: translate(0, 0) !important;
+}
+
+#rightside div button,
+#rightside div a
+{
+    display: block;
+    margin-bottom: 2px;
+    width: 35px;
+    height: 35px;
+    background-color: #49b1f5;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+}
+
+#rightside div button:hover,
+#rightside div a:hover
+{
+    background-color: #ff7242;
+}
+
+/* Rightside End */

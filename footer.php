@@ -65,6 +65,22 @@
 		<?php wp_nav_menu( array( 'depth' => 2, 'theme_location' => 'primary', 'container' => false ) ); ?>
 	</div><!-- m-nav-center end -->
 	<a class="cd-top faa-float animated "></a>
+	<div id="rightside">
+		<div id="rightside-config-show">
+			<button id="rightside_config" type="button" title="设置">
+				<i class="fas fa-cog fa-spin"></i>
+			</button>
+			<button class="close" id="mobile-toc-button" type="button" title="目录">
+				<i class="fas fa-list-ul"></i>
+			</button>
+			<!-- <a id="to_comment" href="#post-comment" title="转到评论" data-pjax-state="anchor">
+				<i class="fas fa-comments"></i>
+			</a> -->
+			<button id="go-up" type="button" title="回到顶部">
+				<i class="fas fa-arrow-up"></i>
+			</button>
+		</div>
+	</div>
 	<button id="moblieGoTop" title="Go to top"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
 	<button id="moblieDarkLight"><i class="fa fa-moon-o" aria-hidden="true"></i></button>
 	<!-- search start -->

@@ -633,7 +633,7 @@ function tableOfContentScroll(flag) {
     } else {
         if (flag) {
             var id = 1,
-                heading_fix = mashiro_option.entry_content_theme == "sakura" ? $("article").hasClass("type-post") ? $("div").hasClass("pattern-attachment-img") ? -75 : 200 : 375 : window.innerHeight / 2;
+            heading_fix = mashiro_option.entry_content_theme == "sakura" ? $("article").hasClass("type-post") ? $("div").hasClass("pattern-attachment-img") ? -80 : -80 : 375 : window.innerHeight / 2;
             $(".entry-content , .links").children("h1,h2,h3,h4,h5").each(function () {
                 var hyphenated = "toc-head-" + id;
                 this.id = hyphenated;
@@ -643,8 +643,10 @@ function tableOfContentScroll(flag) {
                 tocSelector: '.toc',
                 contentSelector: ['.entry-content', '.links'],
                 headingSelector: 'h1, h2, h3, h4, h5',
-                headingsOffset: (heading_fix - window.innerHeight / 2),
-                scrollSmoothOffset: -(heading_fix - window.innerHeight / 2)
+                hasInnerContainers: true,
+                scrollSmoothDuration: 520,
+                headingsOffset: -heading_fix,
+                scrollSmoothOffset: heading_fix
             });
         }
     }
