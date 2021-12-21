@@ -7358,9 +7358,10 @@ li>ol {
 }
 
 .toc {
+    overflow-y: auto;
     position: -webkit-sticky;
     position: sticky;
-    top: 100px
+    top: 100px;
 }
 
 @media (max-width:1200px) {
@@ -7368,6 +7369,7 @@ li>ol {
         position: fixed;
         right: -100%;
         bottom: 30px;
+        top: 565px;
         z-index: 100;
         max-height: calc(100% - 60px);
         width: 300px;
@@ -7389,11 +7391,20 @@ li>ol {
         overflow: hidden;
         margin-top: 20px;
         padding: 20px 24px;
+        border-radius: 8px;
+	    box-shadow: 0 3px 8px 6px rgba(7,17,27,0.05);
+	    -webkit-box-shadow: 0 3px 8px 6px rgba(7,17,27,0.05);
+        transition: all .3s;
+	    /* -webkit-transition: all .3s;
+	    -moz-transition: all .3s;
+	    -o-transition: all .3s;
+	    -ms-transition: all .3s */
     }
-}
 
-.toc {
-    overflow-y: auto
+    .toc-box .toc{
+        top: 0px;
+        background: none;
+    }
 }
 
 .toc>.toc-list {
@@ -8886,9 +8897,13 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
     background-color: #ff7242;
 }
 
-@media (min-width:1200px) {
-    #rightside #mobile-toc-button{
-        display: none
+#rightside #mobile-toc-button {
+    display: none;
+}
+
+@media (max-width:1200px) {
+    #rightside #mobile-toc-button.mobile-toc-show{
+        display: block;
     }
 }
 

@@ -7,6 +7,8 @@
 mashiro_global.variables = new function () {
     this.has_hls = false;
     this.skinSecter = true;
+    this.isInitToc = false;
+    this.isMobileToc = false;
 }
 mashiro_global.ini = new function () {
     this.normalize = function () { // initial functions when page first load (首次加载页面时的初始化函数)
@@ -289,23 +291,25 @@ function scrollBar() {
                 result = parseInt(s / (a - b) * 100),
                 cached = $("#bar");
             cached.css("width", result + "%");
-            if (false) {
-                if (result >= 0 && result <= 19)
-                    cached.css("background", "#cccccc");
-                if (result >= 20 && result <= 39)
-                    cached.css("background", "#50bcb6");
-                if (result >= 40 && result <= 59)
-                    cached.css("background", "#85c440");
-                if (result >= 60 && result <= 79)
-                    cached.css("background", "#f2b63c");
-                if (result >= 80 && result <= 99)
-                    cached.css("background", "#FF0000");
-                if (result == 100)
-                    cached.css("background", "#5aaadb");
-            } else {
-                cached.css("background", "orange");
+            // if (false) {
+            //     if (result >= 0 && result <= 19)
+            //         cached.css("background", "#cccccc");
+            //     if (result >= 20 && result <= 39)
+            //         cached.css("background", "#50bcb6");
+            //     if (result >= 40 && result <= 59)
+            //         cached.css("background", "#85c440");
+            //     if (result >= 60 && result <= 79)
+            //         cached.css("background", "#f2b63c");
+            //     if (result >= 80 && result <= 99)
+            //         cached.css("background", "#FF0000");
+            //     if (result == 100)
+            //         cached.css("background", "#5aaadb");
+            // } else {
+            // }
+            cached.css("background", "orange");
+            if (!mashiro_global.variables.isMobileToc){
+                $("#toc-card").css("height", $(".site-content").outerHeight());
             }
-            $(".toc-container").css("height", $(".site-content").outerHeight());
             $(".skin-menu").removeClass('show');
         });
     }
@@ -626,31 +630,54 @@ function copy_code_block() {
 }
 
 function tableOfContentScroll(flag) {
-    if (document.body.clientWidth <= 1200) {
-        return;
-    } else if ($("div").hasClass("have-toc") == false && $("div").hasClass("has-toc") == false) {
+    if ($("div").hasClass("have-toc") == false && $("div").hasClass("has-toc") == false) {
         $(".toc-container").remove();
     } else {
         if (flag) {
-            var id = 1,
-            heading_fix = mashiro_option.entry_content_theme == "sakura" ? $("article").hasClass("type-post") ? $("div").hasClass("pattern-attachment-img") ? -80 : -80 : 375 : window.innerHeight / 2;
+            $('#mobile-toc-button').addClass('mobile-toc-show'); // 当前有目录就添加目录快捷操作
+
+            var id = 1;
             $(".entry-content , .links").children("h1,h2,h3,h4,h5").each(function () {
                 var hyphenated = "toc-head-" + id;
                 this.id = hyphenated;
                 id++;
             });
-            tocbot.init({
-                tocSelector: '.toc',
-                contentSelector: ['.entry-content', '.links'],
-                headingSelector: 'h1, h2, h3, h4, h5',
-                hasInnerContainers: true,
-                scrollSmoothDuration: 520,
-                headingsOffset: -heading_fix,
-                scrollSmoothOffset: heading_fix
-            });
+            tableOfContentScrollRefresh();
         }
     }
 }
+
+// 刷新一次toc 是否全部展开
+function tableOfContentScrollRefresh(isCollapse){
+    var heading_fix = mashiro_option.entry_content_theme == "sakura" ? $("article").hasClass("type-post") ? $("div").hasClass("pattern-attachment-img") ? -80 : -80 : 375 : window.innerHeight / 2;
+    var option = {
+        tocSelector: '.toc',
+        contentSelector: ['.entry-content', '.links'],
+        headingSelector: 'h1, h2, h3, h4, h5',
+        hasInnerContainers: true,
+        scrollSmoothDuration: 520,
+        headingsOffset: -heading_fix,
+        scrollSmoothOffset: heading_fix
+    }
+
+    if (isCollapse == true){
+        option.collapseDepth = 5
+    }
+
+    if (mashiro_global.variables.isInitToc){
+        tocbot.refresh(option);
+    }else{
+        mashiro_global.variables.isInitToc = true;
+        tocbot.init(option);
+    }
+
+    if (mashiro_global.variables.isMobileToc){
+        var padding = parseInt($("#toc-card").css('padding-top'))
+
+        $("#toc-card").css("height", $("#toc-card .toc").outerHeight() + padding * 2);
+    }
+}
+
 tableOfContentScroll(flag = true);
 var pjaxInit = function () {
     add_upload_tips();
@@ -1866,54 +1893,99 @@ var home = location.href,
             }
         },
         RS: function(){
-            const $rightside = document.getElementById('rightside');
-            const innerHeight = window.innerHeight + 56;
+            const $rightside = $('#rightside');
+            const innerHeight = window.innerHeight + 20;
 
-           if (document.body.scrollHeight <= innerHeight) {
-                $rightside.style.cssText = 'opacity: 0.7; transform: translateX(-58px)';
+            if (document.body.scrollHeight <= innerHeight) {
+                $rightside.css({
+                    'opacity': '0.7',
+                    'transform': 'translateX(-58px)',
+                });
                 return;
+            }
+
+            // Toc API
+            const $cardTocLayout = $('#toc-card')
+            const mobileToc = {
+                IsOpen: false,
+
+                open: function() {
+                    if (!mobileToc.IsOpen){
+                        mobileToc.IsOpen = true;
+                        $cardTocLayout.css({
+                            'opacity': '1',
+                            'right': '55px'
+                        });
+
+                        tableOfContentScrollRefresh(true);
+                    }
+                },
+            
+                close: function() {
+                    if (mobileToc.IsOpen){
+                        //$cardTocLayout.style.animation = ''
+                        mobileToc.IsOpen = false;
+                        $cardTocLayout.css({
+                            'opacity': '',
+                            'right': ''
+                        });
+
+                        tableOfContentScrollRefresh(false);
+                    }
+                },
+
+                switchToc: function() {
+                    if (!mobileToc.IsOpen){
+                        mobileToc.open();
+                    }else{
+                        mobileToc.close();
+                    }
+                },
+
+                resize: function() {
+                    var w = $(window).width();
+
+                    if (w >= 1200){
+                        mashiro_global.variables.isMobileToc = false;
+                        mobileToc.close();
+                    }else{
+                        mashiro_global.variables.isMobileToc = true;
+                    }
+                }
             }
 
             $(window).scroll(function() {
                 var s = $(document).scrollTop();
                 if (s > 20){
-                    if (window.getComputedStyle($rightside).getPropertyValue('opacity') === '0') {
-                        $rightside.style.cssText = 'opacity: 0.7; transform: translateX(-58px)';
+                    if ($rightside.css('opacity') === '0') {
+                        $rightside.css({
+                            'opacity': '0.7',
+                            'transform': 'translateX(-58px)',
+                        });
                     }
                 }else{
-                    $rightside.style.cssText = "opacity: ''; transform: ''";
+                    $rightside.css({
+                        'opacity': '',
+                        'transform': '',
+                    });
                 }
 
                 if (document.body.scrollHeight <= innerHeight) {
-                    $rightside.style.cssText = 'opacity: 0.7; transform: translateX(-58px)';
+                    $rightside.css({
+                        'opacity': '0.7',
+                        'transform': 'translateX(-58px)',
+                    });
                 }
             });
 
-            // Toc API
-            const $cardTocLayout = document.getElementById('toc-card')
-            const mobileToc = {
-                open: function() {
-                  $cardTocLayout.style.cssText = 'opacity: 1; right: 55px;'
-                },
-          
-                close: function() {
-                  $cardTocLayout.style.animation = ''
-                  setTimeout(() => {
-                    $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
-                  }, 100)
-                },
-
-                switchToc: function() {
-                    if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0'){
-                        mobileToc.open();
-                    }else{
-                        mobileToc.close();
-                    }
-                }
-              }
+            // Toc 适配
+            $(window).resize(function(){
+                mobileToc.resize();
+            });
+            mobileToc.resize();
 
             // click event
-            document.getElementById('rightside').addEventListener('click', function (e) {
+            $rightside.on('click', function (e) {
                 const $target = e.target.id || e.target.parentNode.id;
                 switch($target){
                     case 'go-up':
