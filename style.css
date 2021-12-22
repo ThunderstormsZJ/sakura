@@ -1143,7 +1143,7 @@ a:hover {
     max-width: 100%
 }
 
-@media(max-width:1200px) {
+/* @media(max-width:1200px) {
     .site-top .lower nav{
         right: calc(-150px - 100%);
         position: absolute;
@@ -1158,7 +1158,7 @@ a:hover {
     .site-top .lower nav.navbar ul {
         background: #fff;
     }
-}
+} */
 
 #show-nav {
     position: relative;
@@ -5384,7 +5384,7 @@ i.iconfont.down {
     #mo-nav ul li {
         transition-duration: .25s;
         display: block;
-        padding: 6px 40px;
+        padding: 6px 10px;
         color: #fff;
         letter-spacing: .02em;
         text-align: left
