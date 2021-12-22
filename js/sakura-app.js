@@ -1381,6 +1381,32 @@ const MobileTocAPI = {
     }
 }
 
+// FancyApps API
+const FancyAppsAPI = {
+    init: function(){
+        // load css
+        $('head').append(`<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">`);
+        // load js
+        $.getScript(`https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js`, function(){
+            FancyAppsAPI.runFancyBox();
+        })
+    },
+    runFancyBox: function(){
+        // 替换标签
+        var imgEleList = $('.entry-content :not(a):not(.fancybox) > img, .entry-content > img');
+        imgEleList.each(function (i, o) {
+            const $this = $(o);
+            const lazyloadSrc = $this.attr('data-src') || $this.attr('src');
+            const dataCaption = $this.attr('alt') || '';
+            $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="group" data-caption="${dataCaption}" class="fancybox"></a>`);
+          })
+    
+          Fancybox.bind("[data-fancybox]", {
+
+          });
+    }
+}
+
 var home = location.href,
     s = $('#bgvideo')[0],
     Siren = {
@@ -1539,6 +1565,9 @@ var home = location.href,
                     },
                     ignoreClass: 'fancybox',
                 });
+            }else{
+                // FancyApps
+                FancyAppsAPI.init();
             }
             $('.js-toggle-search').on('click', function () {
                 $('.js-toggle-search').toggleClass('is-active');
@@ -1687,19 +1716,32 @@ var home = location.href,
             });
         },
         NH: function () {
-            if(document.body.clientWidth > 860){
-                var h1 = 0;
-                $(window).scroll(function () {
-                    var s = $(document).scrollTop(),
-                        cached = $('.site-header');
-                    if (s == h1) {
-                        cached.removeClass('yya');
-                    }
-                    if (s > h1) {
-                        cached.addClass('yya');
-                    }
-            });
+            var initTop = 0;
+
+            // find the scroll direction
+            function scrollDirection (currentTop) {
+                const result = currentTop > initTop // true is down & false is up
+                initTop = currentTop
+                return result
             }
+
+            $(window).scroll(function () {
+                var s = $(document).scrollTop();
+                var $header = $('.site-header');
+                var isDown = scrollDirection(s);
+                if(document.body.clientWidth > 860){
+                    if (s == 0) {
+                        $header.removeClass('yya');
+                    }else{
+                        $header.addClass('yya');
+                    }
+                }
+                if (isDown){
+                    $header.addClass('nav-fixed');
+                }else{
+                    $header.removeClass('nav-fixed');
+                }
+            });
         },
         XLS: function () {
             $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');

@@ -977,10 +977,14 @@ a:hover {
     height: 75px;
     background: 0 0;
     -webkit-transition: all .4s ease;
-    transition: all .4s ease;
+    transition: all .5s ease;
     position: fixed;
-    z-index: 9999;
+    z-index: 999;
     top: 0
+}
+
+.site-header.nav-fixed{
+    top: -75px;
 }
 
 .yya {

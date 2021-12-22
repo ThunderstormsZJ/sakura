@@ -1783,14 +1783,6 @@ msgstr "在实时搜索中搜索评论（如果网站评论数量太多不建议
 msgid "Enable baguetteBox"
 msgstr "启用 baguetteBox"
 
-#: options.php:1205
-msgid ""
-"Default off，<a href=\"https://github.com/mashirozx/Sakura/wiki/Fancybox"
-"\">please read wiki</a>"
-msgstr ""
-"默认禁用，<a href=\"https://github.com/mashirozx/Sakura/wiki/Fancybox\">请阅"
-"读说明</a>"
-
 #: options.php:1211
 msgid "Enable lazyload in posts"
 msgstr "文章内图片启用 lazyload"

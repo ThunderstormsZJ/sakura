@@ -1615,10 +1615,6 @@ msgstr ""
 msgid "Enable baguetteBox"
 msgstr ""
 
-#: options.php:1205
-msgid "Default off，<a href=\"https://github.com/mashirozx/Sakura/wiki/Fancybox\">please read wiki</a>"
-msgstr ""
-
 #: options.php:1211
 msgid "Enable lazyload in posts"
 msgstr ""
