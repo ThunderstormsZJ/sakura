@@ -146,16 +146,12 @@ template {
 a {
     background-color: transparent;
     text-decoration: none;
-    cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/ayuda.cur), auto
+    cursor: url(https://cdn.jsdelivr.net/npm/kang-static/Hexo/img/pointer.cur),default;
 }
 
 a:active,
 a:hover {
     outline: 0
-}
-
-a:active {
-    cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/work.cur), alias
 }
 
 abbr[title] {
@@ -338,7 +334,7 @@ h6 {
 
 p {
     margin-bottom: 1.5em;
-    cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/texto.cur), auto
+    /* cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/texto.cur), auto */
 }
 
 cite,
@@ -434,7 +430,7 @@ html {
 body {
     background: #fff;
     background-attachment: fixed;
-    cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/normal.cur), auto
+    cursor: url(https://cdn.jsdelivr.net/npm/kang-static/Hexo/img/default.cur),default;
 }
 
 blockquote:after,
@@ -7343,6 +7339,29 @@ li>ol {
     background: #0bf
 }
 
+
+/*#region TOC*/
+@keyframes toc-open{
+    0% {
+        transform: scale(.7)
+    }
+  
+    100% {
+        transform: scale(1)
+    }
+
+}
+
+@keyframes toc-close{
+    0%{
+        opacity: 1
+    }
+  
+    100%{
+        opacity: 0
+    }
+}
+
 .toc-container {
     z-index: 98;
     width: 200px;
@@ -7367,9 +7386,9 @@ li>ol {
 @media (max-width:1200px) {
     .toc-container {
         position: fixed;
-        right: -100%;
-        bottom: 30px;
-        top: 565px;
+        right: 55px;
+        bottom: 44px;
+        top: unset;
         z-index: 100;
         max-height: calc(100% - 60px);
         width: 300px;
@@ -7387,15 +7406,15 @@ li>ol {
     }
 
     .toc-box {
-        background: hsla(0,0%,100%,0.6);
+        background: hsla(0,0%,100%,0.97);
         overflow: hidden;
         margin-top: 20px;
         padding: 20px 24px;
         border-radius: 8px;
 	    box-shadow: 0 3px 8px 6px rgba(7,17,27,0.05);
 	    -webkit-box-shadow: 0 3px 8px 6px rgba(7,17,27,0.05);
-        transition: all .3s;
-	    /* -webkit-transition: all .3s;
+        /* transition: all .3s;
+	    -webkit-transition: all .3s;
 	    -moz-transition: all .3s;
 	    -o-transition: all .3s;
 	    -ms-transition: all .3s */
@@ -7426,6 +7445,20 @@ a.toc-link {
     height: 100%
 }
 
+.toc-link::before {
+    background-color: #EEE;
+    content: ' ';
+    display: inline-block;
+    height: inherit;
+    left: 0;
+    margin-top: -1px;
+    position: absolute;
+    width: 2px
+}
+
+/*#endregion*/
+
+
 .is-collapsible {
     max-height: 1000px;
     overflow: hidden;
@@ -7443,17 +7476,6 @@ a.toc-link {
 
 .is-active-link {
     font-weight: 700
-}
-
-.toc-link::before {
-    background-color: #EEE;
-    content: ' ';
-    display: inline-block;
-    height: inherit;
-    left: 0;
-    margin-top: -1px;
-    position: absolute;
-    width: 2px
 }
 
 .is-active-link::before {
@@ -8170,7 +8192,7 @@ a.toc-link {
     padding: 2px;
     text-shadow: none;
     border-radius: 0 0 5px 5px;
-    cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/texto.cur), auto
+    /* cursor: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/texto.cur), auto */
 }
 
 .highlight-wrap code[data-rel]:before {
@@ -8371,26 +8393,28 @@ td.hljs-ln-numbers {
 
 .skin-menu {
     position: fixed;
-    bottom: 50px;
+    bottom: 122px;
     left: auto;
-    right: 10px;
+    right: 55px;
     height: auto;
     width: 220px;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 1px 40px -8px rgba(0, 0, 0, .5);
-    z-index: 99;
+    border-radius: 8px;
+    background: hsla(0,0%,100%,0.97);
+    box-shadow: 0 3px 8px 6px rgb(7 17 27 / 5%);
+    -webkit-box-shadow: 0 3px 8px 6px rgb(7 17 27 / 5%);
+    z-index: 100;
     font-family: Ubuntu, sans-serif;
-    transform: scaleX(0);
-    transiton-property: transform, background;
-    transition-duration: .3s, .3s
+    opacity: 0;
+    transform-origin: right bottom;
+    transition-duration: .3s, .3s;
 }
 
 .skin-menu.show {
-    transform: scaleX(1)
+    animation: toc-open .3s;
+    opacity: 1;
 }
 
-.skin-menu::after {
+/* .skin-menu::after {
     content: "";
     position: absolute;
     bottom: -20px;
@@ -8399,7 +8423,7 @@ td.hljs-ln-numbers {
     border-width: 10px;
     border-style: solid;
     border-color: #fff transparent transparent transparent
-}
+} */
 
 .skin-menu .row-container {
     height: auto;
@@ -8851,7 +8875,7 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
     color: orange;
 }
 
-/* Rightside */
+/*#region Rightside */
 
 #rightside {
     position: fixed;
@@ -8882,6 +8906,7 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
     background-color: #49b1f5;
     color: #fff;
     text-align: center;
+    box-shadow: none;
     font-size: 16px;
     line-height: 35px;
     border-radius: 5px;
@@ -8907,4 +8932,4 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
     }
 }
 
-/* Rightside End */
+/*#endregion */
