@@ -329,7 +329,7 @@ h3,
 h4,
 h5,
 h6 {
-    clear: both
+    clear: both;
 }
 
 p {
@@ -344,7 +344,7 @@ i {
     font-style: italic
 }
 
-blockquote {
+/* blockquote {
     margin: 0;
     padding: 30px 60px;
     position: relative
@@ -357,7 +357,7 @@ blockquote:before {
     top: -25px;
     left: 12px;
     color: orange;
-    font-family: FontAwesome
+    font-family: "Font Awesome 5 Free";
 }
 
 blockquote:after {
@@ -367,12 +367,12 @@ blockquote:after {
     bottom: -25px;
     right: -5px;
     color: orange;
-    font-family: FontAwesome
+    font-family: "Font Awesome 5 Free";
 }
 
 blockquote p {
     margin: 5px 0
-}
+} */
 
 address {
     margin: 0 0 1.5em
@@ -433,14 +433,11 @@ body {
     cursor: url(https://cdn.jsdelivr.net/npm/kang-static/Hexo/img/default.cur),default;
 }
 
-blockquote:after,
-blockquote:before,
 q:after,
 q:before {
     content: ""
 }
 
-blockquote,
 q {
     quotes: "" ""
 }

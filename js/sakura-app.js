@@ -1381,11 +1381,10 @@ const FancyAppsAPI = {
             const $this = $(o);
             const lazyloadSrc = $this.attr('data-src') || $this.attr('src');
             const dataCaption = $this.attr('alt') || '';
-            $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="group" data-caption="${dataCaption}" class="fancybox"></a>`);
+            $this.wrap(`<a href="${lazyloadSrc}" data-fancybox="group" data-thumb="${lazyloadSrc}" data-caption="${dataCaption}" class="fancybox"></a>`);
           })
     
           Fancybox.bind("[data-fancybox]", {
-
           });
     }
 }
