@@ -1353,7 +1353,7 @@ const MobileTocAPI = {
     },
 
     resize: function() {
-        var w = $(window).width();
+		var w = $(window).width();
 
         if (w >= 1200){
             $('#toc-card').removeClass("toc-box");
