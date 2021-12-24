@@ -1360,7 +1360,7 @@ const MobileTocAPI = {
             mashiro_global.variables.isMobileToc = false;
             MobileTocAPI.close();
         }else{
-            $('#toc-card').toggleClass("toc-box");
+            $('#toc-card').addClass("toc-box");
             mashiro_global.variables.isMobileToc = true;
         }
     }
