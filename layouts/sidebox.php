@@ -5,7 +5,7 @@
 	 */
 
 ?>
-<div class="toc-container"><div class="toc"></div></div>
+<div class="toc-container" id="toc-card"><div class="toc"></div></div>
 
 <!-- <div class="card-widget" id="card-toc">
 	<div class="item-headline">

@@ -1356,9 +1356,11 @@ const MobileTocAPI = {
         var w = $(window).width();
 
         if (w >= 1200){
+            $('#toc-card').removeClass("toc-box");
             mashiro_global.variables.isMobileToc = false;
             MobileTocAPI.close();
         }else{
+            $('#toc-card').toggleClass("toc-box");
             mashiro_global.variables.isMobileToc = true;
         }
     }
