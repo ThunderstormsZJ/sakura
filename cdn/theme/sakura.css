@@ -6,6 +6,10 @@
     color: #6a737d;
 }
 
+.entry-content blockquote blockquote {
+    margin: 20px 0 0 0;
+}
+
 .entry-content blockquote p {
     line-height: unset;
     color: unset;
@@ -31,27 +35,35 @@
 
 .entry-content ul {
     list-style: disc;
-    padding: 15px 10px 15px 38px;
     color: #616161;
-    margin-left: 0;
+    margin: 5px 0 5px 0;
     border-radius: 10px
-}
-
-.entry-content ul ul {
-    border: none;
-    padding: 15px 10px 3px 30px;
 }
 
 .entry-content ol {
     list-style: decimal;
     color: #616161;
-    margin: 0;
+    margin: 5px 0 5px 0;
     border-radius: 10px
+}
+
+.entry-content ul ul,
+.entry-content ul ol{
+    margin: 5px 0 0 0;
+}
+
+.entry-content ol ul,
+.entry-content ol ol{
+    margin: 5px 0 0 0;
 }
 
 .entry-content ul li p {
     line-height: 25px;
     margin: 0;
+}
+
+.entry-content ul li {
+    list-style-type: circle;
 }
 
 .entry-content ol li,
@@ -63,7 +75,7 @@
     margin-top: 10px;
 }
 
-.entry-content ol li::marker{
+.entry-content li::marker{
     color: #49b1f5;
     font-weight: 600;
     font-size: 1.05em;
@@ -91,26 +103,7 @@ h6 {
     display: unset;
     margin-right: .5rem;
     color: #49b1f5;
-}
-
-.site-main .entry-content h1:before {
-    content: "\f0c1"
-}
-
-.site-main .entry-content h2:before {
-    content: "H2"
-}
-
-.site-main .entry-content h3:before {
-    content: "H3"
-}
-
-.site-main .entry-content h4:before {
-    content: "H4"
-}
-
-.site-main .entry-content h5:before {
-    content: "H5"
+    content: "\f0c1";
 }
 
 .entry-content h3, .entry-content h4, .entry-content h5 {
@@ -184,27 +177,31 @@ h1.entry-title {
     transition: all 1s ease-in-out;
 }
 
-.entry-content table {
+.entry-content table:not(.hljs-ln) {
     border-collapse: collapse;
     width: 100%;
     border-radius: 5px
 }
 
-.entry-content th, .entry-content td {
-    padding: 8px;
+.entry-content table:not(.hljs-ln) thead{
+    background: rgba(153,169,191,.1);
 }
 
-.entry-content tr:nth-child(even) {
+.entry-content table:not(.hljs-ln) th, 
+.entry-content table:not(.hljs-ln) td {
+    padding: 6px 12px;
+    border: 1px solid #eee;
+    vertical-align: middle;
+}
+
+/* 隔行变色 */
+/* .entry-content tr:nth-child(even) {
     background-color: #f2f2f2
 }
 
 body.dark .entry-content tr:nth-child(even) {
     background-color: unset
-}
-
-.entry-content th {
-    color: white;
-}
+} */
 
 /*fix code block*/
 .entry-content pre th, .entry-content pre td {

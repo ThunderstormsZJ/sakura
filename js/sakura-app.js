@@ -629,7 +629,8 @@ function tableOfContentScroll(flag) {
     }
 }
 
-// 刷新一次toc 是否全部展开
+// @des 刷新一次toc 
+// @param isCollapse 是否全部展开
 function tableOfContentScrollRefresh(isCollapse){
     var heading_fix = mashiro_option.entry_content_theme == "sakura" ? $("article").hasClass("type-post") ? $("div").hasClass("pattern-attachment-img") ? -80 : -80 : 375 : window.innerHeight / 2;
     var option = {
@@ -1314,7 +1315,8 @@ const MobileTocAPI = {
             mashiro_global.variables.isOpenToc = true;
             $('#toc-card').css({
                 'animation': 'toc-open .3s',
-                'opacity': '1'
+                'opacity': '1',
+                'display': 'block'
             });
 
             tableOfContentScrollRefresh(true);
@@ -1330,14 +1332,16 @@ const MobileTocAPI = {
                 setTimeout(function(){
                     $('#toc-card').css({
                         'animation': '',
-                        'opacity': ''
+                        'opacity': '',
+                        'display': 'none'
                     });
                     tableOfContentScrollRefresh(false);
                 }, 300)
             }else{
                 $('#toc-card').css({
                     'animation': '',
-                    'opacity': ''
+                    'opacity': '',
+                    'display': 'none'
                 });
                 tableOfContentScrollRefresh(false);
             }
@@ -1359,6 +1363,7 @@ const MobileTocAPI = {
             $('#toc-card').removeClass("toc-box");
             mashiro_global.variables.isMobileToc = false;
             MobileTocAPI.close();
+            tocCardResize();
         }else{
             $('#toc-card').addClass("toc-box");
             mashiro_global.variables.isMobileToc = true;
