@@ -31,8 +31,7 @@
 
 .entry-content ul {
     list-style: disc;
-    border: 1px dashed #E4E4E4;
-    padding: 15px 10px 15px 50px;
+    padding: 15px 10px 15px 38px;
     color: #616161;
     margin-left: 0;
     border-radius: 10px
@@ -40,21 +39,34 @@
 
 .entry-content ul ul {
     border: none;
-    padding: 15px 10px 15px 30px;
+    padding: 15px 10px 3px 30px;
 }
 
 .entry-content ol {
     list-style: decimal;
-    border: 1px dashed #E4E4E4;
-    padding: 15px 10px 15px 50px;
     color: #616161;
-    margin-left: 0;
+    margin: 0;
     border-radius: 10px
+}
+
+.entry-content ul li p {
+    line-height: 25px;
+    margin: 0;
 }
 
 .entry-content ol li,
 .entry-content ul li {
-    padding: 8px 0
+    padding: 4px 0
+}
+
+.entry-content ul li ol {
+    margin-top: 10px;
+}
+
+.entry-content ol li::marker{
+    color: #49b1f5;
+    font-weight: 600;
+    font-size: 1.05em;
 }
 
 .entry-content {
@@ -112,10 +124,10 @@ h6 {
 }
 
 .entry-content code {
-    background: rgba(254, 250, 199, 1);
-    color: #E67474;
+    background: rgba(27,31,35,.05);
+    color: #f47466;
     word-break: break-word;
-    font-family: 'Source Code Pro', monospace, Helvetica, Tahoma, Arial, STXihei, "STHeiti Light", "Microsoft YaHei", sans-serif;
+    font-family: consolas,Menlo,"PingFang SC","Microsoft JhengHei","Microsoft YaHei",sans-serif!important;
     padding: 2px;
     text-shadow: none;
     border-radius: 5px
@@ -145,23 +157,31 @@ h1.entry-title {
 }
 
 .entry-content hr {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    display: block;
-    border: 0;
-    text-align: center;
-    background: 0 0
+    position: relative;
+    margin: 40px auto;
+    border: 2px dashed #a4d8fa;
+    width: calc(100% - 4px);
+    background-color: transparent;
+    height: 0px;
+    overflow: visible;
 }
 
 .entry-content hr:before {
-    content: '...';
+    content: '\f0c4';
+    font-size: 20px;
+    color: #80c8f8;
+    position: absolute;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    z-index: 1;
+    top: -14px;
+    left: 5%;
     display: inline-block;
-    margin-left: .6em;
-    color: rgba(0, 0, 0, .8);
-    position: relative;
-    top: -30px;
-    font-size: 28px;
-    letter-spacing: .6em
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 
 .entry-content table {

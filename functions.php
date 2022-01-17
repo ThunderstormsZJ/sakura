@@ -1275,7 +1275,7 @@ add_filter('comment_text_rss', 'bili_smile_filter_rss'); //替换评论rss关键
 
 function toc_support($content)
 {
-    $content = str_replace('[toc]', '<div class="has-toc have-toc"></div>', $content); // TOC 支持
+    $content = str_ireplace('[toc]', '<div class="has-toc have-toc"></div>', $content); // TOC 支持
     $content = str_replace('[begin]', '<span class="begin">', $content); // 首字格式支持
     $content = str_replace('[/begin]', '</span>', $content); // 首字格式支持
     return $content;
