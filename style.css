@@ -1021,7 +1021,7 @@ a:hover {
 }
 
 .openNav,
-.site-title a,
+.openNav .site-title a,
 .main-page-header,
 .main-page-header a{
     color: #eee;
@@ -1547,8 +1547,8 @@ i.iconfont.hotpost {
     font-size: 12px
 }
 
-.comments-number {
-    margin: 0 10px
+.article-meta-separator {
+    margin: 0 10px;
 }
 
 .post-thumb {
@@ -1582,10 +1582,9 @@ i.iconfont.hotpost {
     position: relative;
     display: inline-block;
     float: right;
-    padding-right: 30px;
     padding-left: 0;
     width: 49%;
-    margin: 20px 10px 0 10px
+    margin: 46px 29px 0 10px
 }
 
 .float-content {
@@ -1617,7 +1616,7 @@ i.iconfont.hotpost {
     overflow: hidden
 }
 
-@media (max-width:768px) {
+@media (max-width:860px) {
     .float-content p {
         height: auto;
         display: block
@@ -1630,7 +1629,6 @@ i.iconfont.hotpost {
     .post-list-thumb {
         padding: 0;
         border: 0;
-        box-shadow: none
     }
 
     .float-content,
@@ -1640,10 +1638,14 @@ i.iconfont.hotpost {
         left: 0
     }
 
+    .post-thumb {
+        height: 230px;
+    }
+
     .post-list-thumb .post-content-wrap {
         text-align: left !important;
         margin: 0 !important;
-        padding: 20px !important;
+        padding: 0 20px 0 20px !important;
         float: none !important;
         box-shadow: none;
         border-top: 0
@@ -1673,7 +1675,7 @@ i.iconfont.hotpost {
     }
 
     .post-thumb a {
-        border-radius: 10px !important
+        border-radius: 10px 10px 0 0;
     }
 }
 
@@ -3749,7 +3751,8 @@ h1.main-title {
     font-weight: 400;
     padding-bottom: 5px;
     margin-bottom: 30px;
-    border-bottom: 1px dashed #ECECEC
+    border-bottom: 1px dashed #ECECEC;
+    text-align: left;
 }
 
 .feature-content {
@@ -8272,12 +8275,12 @@ a.toc-link {
 .top-feature-row {
     width: 100%;
     height: auto;
-    margin-top: 55px
+    margin-top: 55px;
+    text-align: center;
 }
 
 .top-feature-v2 {
     display: inline-block;
-    margin: 0 25px 0 25px;
 }
 
 .the-feature {

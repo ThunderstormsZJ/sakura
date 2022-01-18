@@ -1733,6 +1733,7 @@ var home = location.href,
         },
         NH: function () {
             var initTop = 0;
+            var isInit = true;
 
             // find the scroll direction
             function scrollDirection (currentTop) {
@@ -1746,6 +1747,13 @@ var home = location.href,
                 var $header = $('.site-header');
                 var isDown = scrollDirection(s);
                 
+                if (isInit) {
+                    isInit = false;
+                    $header.css({"display": "none"});
+                    return;
+                }
+
+                $header.css({"display": ""});
                 if(document.body.clientWidth > 860){
 
                 }else{
@@ -2088,8 +2096,8 @@ var home = location.href,
 $(function () {
     Siren.AH();
     Siren.PE();
-    Siren.NH();
     // Siren.GT();
+    Siren.NH();
     Siren.RS();
     Siren.XLS();
     Siren.XCS();

@@ -75,19 +75,21 @@ if ( akina_option('theme_skin') ) { ?>
     border-radius: 10px 0 0 10px
 }
 <?php }if(akina_option('feature_align') == 'alternate'){ ?>
-.post-list-thumb:nth-child(2n) .post-content-wrap {
-    float: left;
-    padding-left: 30px;
-    padding-right: 0;
-    text-align: right;
-    margin: 20px 10px 10px 0
-}
-.post-list-thumb:nth-child(2n) .post-thumb {
-    float: left
-}
-
-.post-list-thumb:nth-child(2n) .post-thumb a {
-    border-radius: 10px 0 0 10px
+@media (min-width:860px){
+    .post-list-thumb:nth-child(2n) .post-content-wrap {
+        /* float: left;
+        padding-left: 30px;
+        padding-right: 0;
+        text-align: right;
+        margin: 20px 10px 10px 0 */
+    }
+    .post-list-thumb:nth-child(2n) .post-thumb {
+        float: left
+    }
+    
+    .post-list-thumb:nth-child(2n) .post-thumb a {
+        border-radius: 10px 0 0 10px
+    }
 }
 <?php } ?>
 

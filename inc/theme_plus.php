@@ -477,6 +477,11 @@ function header_user_menu(){
           <?php if (current_user_can('level_10')) { ?>
             <a href="<?php bloginfo('url'); ?>/wp-admin/" target="_blank"><?php _e('Dashboard','sakura')/*管理中心*/?></a>
             <a href="<?php bloginfo('url'); ?>/wp-admin/post-new.php" target="_blank"><?php _e('New post','sakura')/*撰写文章*/?></a>
+
+            <?php if (is_single()) { ?>
+              <a href="<?php bloginfo('url'); ?>/wp-admin/post.php?post=<?php echo get_the_ID(); ?>&action=edit" target="_blank"><?php _e('Edit post','sakura')/*编写当前文章*/?></a>
+            <?php } ?>
+
           <?php } ?>
           <a href="<?php bloginfo('url'); ?>/wp-admin/profile.php" target="_blank"><?php _e('Profile','sakura')/*个人资料*/?></a>
           <a href="<?php echo wp_logout_url(get_bloginfo('url')); ?>" target="_top"><?php _e('Sign out','sakura')/*退出登录*/?></a>
@@ -553,7 +558,7 @@ function changes_post_excerpt_more( $more ) {
     return ' ...';
 }
 function changes_post_excerpt_length( $length ) {
-    return 65;
+    return 80;
 }
 add_filter( 'excerpt_more', 'changes_post_excerpt_more' );
 add_filter( 'excerpt_length', 'changes_post_excerpt_length', 999 );

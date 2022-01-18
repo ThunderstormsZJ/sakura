@@ -1,17 +1,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sakura\n"
-"POT-Creation-Date: 2020-08-06 17:39+0800\n"
-"PO-Revision-Date: 2020-08-06 17:42+0800\n"
+"POT-Creation-Date: 2022-01-18 20:21+0800\n"
+"PO-Revision-Date: 2022-01-18 20:23+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3.1\n"
-"X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -38,7 +38,7 @@ msgstr "返回首页"
 msgid "Don't worry, search in site?"
 msgstr "别着急，试试站内检索？"
 
-#: 404.php:54 footer.php:62 search.php:42
+#: 404.php:54 footer.php:68 search.php:42
 msgid "Search..."
 msgstr "搜索..."
 
@@ -126,15 +126,15 @@ msgstr "禁止小广告😀"
 msgid "Site"
 msgstr "网站"
 
-#: footer.php:76 footer.php:84
+#: footer.php:101 footer.php:109
 msgid "Want to find something?"
 msgstr "想要找点什么呢？"
 
-#: footer.php:86
+#: footer.php:111
 msgid "Search"
 msgstr "搜索"
 
-#: footer.php:145
+#: footer.php:170
 msgid "Widgets"
 msgstr "小工具"
 
@@ -142,36 +142,36 @@ msgstr "小工具"
 msgid "Nav Menus"
 msgstr "导航菜单"
 
-#: functions.php:423 inc/theme_plus.php:186 layouts/authorprofile.php:11
+#: functions.php:434 inc/theme_plus.php:186 layouts/authorprofile.php:11
 #: options.php:121
 msgid "Author"
 msgstr "作者"
 
-#: functions.php:423
+#: functions.php:434
 msgid "Blogger"
 msgstr "博主"
 
-#: functions.php:427
+#: functions.php:438
 msgid "Location"
 msgstr "来自"
 
-#: functions.php:431
+#: functions.php:443
 msgid "Private"
 msgstr "私密"
 
-#: functions.php:433
+#: functions.php:445
 msgid "Yes"
 msgstr "是"
 
-#: functions.php:435
+#: functions.php:447
 msgid "No"
 msgstr "否"
 
-#: functions.php:438
+#: functions.php:450
 msgid "Edit"
 msgstr "编辑"
 
-#: functions.php:527
+#: functions.php:539
 msgid ""
 "Please install pulgin <a href=\"https://wordpress.org/plugins/wp-statistics/"
 "\" target=\"_blank\">WP-Statistics</a>"
@@ -179,39 +179,39 @@ msgstr ""
 "请安装插件 <a href=\"https://wordpress.org/plugins/wp-statistics/\" target="
 "\"_blank\">WP-Statistics</a>"
 
-#: functions.php:577
+#: functions.php:589
 msgid "This guy is so lazy ╮(╯▽╰)╭"
 msgstr "这家伙好懒╮(╯▽╰)╭"
 
-#: functions.php:1335
+#: functions.php:1347
 msgid "All expand/collapse"
 msgstr "全部展开/收缩"
 
-#: functions.php:1356 options.php:980
+#: functions.php:1371 options.php:980
 msgid " "
 msgstr ""
 
-#: functions.php:1360
+#: functions.php:1375
 msgid " post(s)"
 msgstr " 篇文章"
 
-#: functions.php:1383 functions.php:1386 inc/theme_plus.php:478
+#: functions.php:1398 functions.php:1401 inc/theme_plus.php:478
 msgid "Dashboard"
 msgstr "管理中心"
 
-#: functions.php:1612
+#: functions.php:1627
 msgid "<b>ERROR</b>: This email domain (<b>@"
 msgstr ""
 
-#: functions.php:1717
+#: functions.php:1732
 msgid "QQ"
 msgstr ""
 
-#: functions.php:1779
+#: functions.php:1794
 msgid "Sidebar"
 msgstr "侧栏"
 
-#: functions.php:1892
+#: functions.php:1907
 msgid ""
 "<b> For a better experience, please do not set <a href=\"/wp-admin/options-"
 "permalink.php\"> permalink </a> as plain. To do this, you may need to "
@@ -248,7 +248,7 @@ msgstr "图像"
 msgid "no image"
 msgstr "暂无"
 
-#: inc/classes/Cache.php:70 inc/theme_plus.php:727
+#: inc/classes/Cache.php:70 inc/theme_plus.php:728
 msgid "The comment is private"
 msgstr "该评论为私密评论"
 
@@ -431,11 +431,16 @@ msgstr "编辑"
 msgid "New post"
 msgstr "撰写文章"
 
-#: inc/theme_plus.php:481
+#: inc/theme_plus.php:480
+#| msgid "Edit %s"
+msgid "Edit post"
+msgstr "修改文章"
+
+#: inc/theme_plus.php:482
 msgid "Profile"
 msgstr "个人资料"
 
-#: inc/theme_plus.php:482
+#: inc/theme_plus.php:483
 msgid "Sign out"
 msgstr "退出登录"
 
@@ -1003,6 +1008,7 @@ msgstr "文章页"
 msgid "Post style"
 msgstr "文章样式"
 
+#. Theme Name of the plugin/theme
 #: options.php:577
 msgid "Sakura"
 msgstr "默认样式"
@@ -1664,7 +1670,7 @@ msgstr "原理与Ajax相同"
 msgid "Enable NProgress progress bar"
 msgstr "开启NProgress加载进度条"
 
-#: options.php:1115 options.php:1122 options.php:1129
+#: options.php:1115 options.php:1122 options.php:1129 options.php:1205
 msgid "Default off, check on"
 msgstr "默认不开启，勾选开启"
 
@@ -1826,17 +1832,17 @@ msgstr "关于 %s 的搜索结果："
 msgid "NOTHING"
 msgstr "啥也没有呀"
 
-#: tpl/content-image.php:35 tpl/content-status.php:31 tpl/content-thumb.php:43
+#: tpl/content-image.php:35 tpl/content-status.php:31 tpl/content-thumb.php:48
 #: tpl/content.php:34
 msgid "Comment"
 msgstr "条评论"
 
-#: tpl/content-image.php:35 tpl/content-status.php:31 tpl/content-thumb.php:43
+#: tpl/content-image.php:35 tpl/content-status.php:31 tpl/content-thumb.php:48
 #: tpl/content.php:34
 msgid "Comments"
 msgstr "条评论"
 
-#: tpl/content-image.php:38 tpl/content-status.php:34 tpl/content-thumb.php:42
+#: tpl/content-image.php:38 tpl/content-status.php:34 tpl/content-thumb.php:45
 #: tpl/content.php:37
 msgid "Hit"
 msgid_plural "Hits"
@@ -1944,6 +1950,34 @@ msgstr "注册成功！正在跳转......"
 msgid "Registration is not open yet."
 msgstr "暂未开放注册。"
 
+#. Theme URI of the plugin/theme
+msgid "https://github.com/mashirozx/Sakura/"
+msgstr ""
+
+#. Description of the plugin/theme
+#, fuzzy
+#| msgid "A branch of theme Akina"
+msgid "A wonderful branch of theme Akina"
+msgstr "Akina主题分支（原版地址 http://www.akina.pw/themeakina）"
+
+#. Author of the plugin/theme
+msgid "Mashiro, Spirit, Louie, Fuzzz"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://2heng.xin"
+msgstr ""
+
+#. Template Name of the plugin/theme
+#, fuzzy
+#| msgid "Search"
+msgid "archive"
+msgstr "搜索"
+
+#. Template Name of the plugin/theme
+msgid "links"
+msgstr ""
+
 #~ msgid "Transparent"
 #~ msgstr "全透明"
 
@@ -2013,9 +2047,6 @@ msgstr "暂未开放注册。"
 
 #~ msgid " Previous"
 #~ msgstr " 上一页"
-
-#~ msgid "A branch of theme Akina"
-#~ msgstr "Akina主题分支（原版地址 http://www.akina.pw/themeakina）"
 
 #, php-format
 #~ msgid "第 %s 页"

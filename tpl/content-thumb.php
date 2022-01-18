@@ -32,23 +32,31 @@ $the_cat = get_the_category();
 		<div class="post-content-wrap">
 			<div class="post-content">
 				<div class="post-date">
-					<i class="iconfont icon-time"></i><?php echo poi_time_since(strtotime($post->post_date_gmt)); ?>
-					<?php if(is_sticky()) : ?>
-					&nbsp;<i class="iconfont hotpost icon-hot"></i>
-			 		<?php endif ?>
+					
 				</div>
 				<a href="<?php the_permalink(); ?>" class="post-title"><h3><?php the_title();?></h3></a>
 				<div class="post-meta">
-					<span><i class="iconfont icon-attention"></i><?php echo get_post_views(get_the_ID()).' '._n('Hit','Hits',get_post_views(get_the_ID()),'sakura')/*热度*/?></span>
-					<span class="comments-number"><i class="iconfont icon-mark"></i><?php comments_popup_link('NOTHING', '1 '.__("Comment","sakura")/*条评论*/, '% '.__("Comments","sakura")/*条评论*/); ?></span>
-					<span><i class="iconfont icon-file"></i><a href="<?php echo esc_url(get_category_link($the_cat[0]->cat_ID)); ?>"><?php echo $the_cat[0]->cat_name; ?></a>
+					<span>
+						<i class="iconfont icon-time"></i><?php echo poi_time_since(strtotime($post->post_date_gmt)); ?>
+						<?php if(is_sticky()) : ?>
+						&nbsp;<i class="iconfont hotpost icon-hot"></i>
+						<?php endif ?>
+					</span>
+					<!-- <span class="comments-number"><i class="iconfont icon-attention"></i><?php echo get_post_views(get_the_ID()).' '._n('Hit','Hits',get_post_views(get_the_ID()),'sakura')/*热度*/?></span> -->
+					<span>
+						<span class="article-meta-separator">|</span>
+						<i class="iconfont icon-mark"></i><?php comments_popup_link('NOTHING', '1 '.__("Comment","sakura")/*条评论*/, '% '.__("Comments","sakura")/*条评论*/); ?>
+					</span>
+					<span>
+						<span class="article-meta-separator">|</span>
+						<i class="iconfont icon-file"></i><a href="<?php echo esc_url(get_category_link($the_cat[0]->cat_ID)); ?>"><?php echo $the_cat[0]->cat_name; ?></a>
 					</span>
 				</div>
 				<div class="float-content">
 					<?php substr(the_excerpt() , 0 , 3); ?>
-					<div class="post-bottom">
+					<!-- <div class="post-bottom">
 						<a href="<?php the_permalink(); ?>" class="button-normal"><i class="iconfont icon-caidan"></i></a>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
