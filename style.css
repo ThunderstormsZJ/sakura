@@ -993,6 +993,7 @@ a:hover {
     top: 0
 }
 
+.openNav.nav-fixed,
 .site-header.nav-fixed {
     top: -75px;
 }
@@ -1010,8 +1011,24 @@ a:hover {
     z-index: 9999
 }
 
-.site-header:hover {
-    background-color: #fff
+.site-header,
+.site-header a,
+.openNav.yya,
+.openNav.yya a,
+.main-page-header.yya,
+.main-page-header.yya a{
+    color: #666;
+}
+
+.openNav,
+.site-title a,
+.main-page-header,
+.main-page-header a{
+    color: #eee;
+}
+
+nav .menu li i {
+    padding-right: 4px;
 }
 
 .sabit {
@@ -1032,7 +1049,6 @@ a:hover {
 }
 
 .site-title a {
-    color: #464646;
     font-weight: 400
 }
 
@@ -1117,7 +1133,7 @@ a:hover {
 .site-top ul li a {
     padding: 10px 0;
     display: inline-block;
-    color: #666
+    /* color: #666 */
 }
 
 .site-top ul li a:hover {
@@ -1303,6 +1319,11 @@ a:hover {
     margin-left: auto;
     margin-right: auto;
     background-color: rgba(255, 255, 255, .8)
+}
+
+.site-content .content-area {
+    width: 90%;
+    margin: auto;
 }
 
 .post-list {
@@ -4194,7 +4215,6 @@ li.feature-2 {
 }
 
 i.iconfont.js-toggle-search.iconsearch {
-    color: #666;
     cursor: pointer;
     font-size: 26px;
     -webkit-transition: all .3s ease-in-out;
@@ -5252,10 +5272,10 @@ i.iconfont.down {
     }
 
     .site-branding {
-        float: right;
+        float: left;
         height: 50px;
         line-height: 43px;
-        margin-right: -6px
+        margin: 2px 0 0 31px;
     }
 
     .site-title img {
@@ -5318,30 +5338,6 @@ i.iconfont.down {
 }
 
 @media (max-width:860px) {
-    #main-container {
-        transition: background,transform .5s !important;
-        position: relative;
-        overflow: hidden;
-        z-index: 2
-    }
-
-    #main-container.open:before {
-        content: "";
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        background-color: rgba(0, 0, 0, .4);
-        z-index: 99
-    }
-
-    #main-container.open {
-        transform: translateX(250px) translateY(0);
-        -webkit-transform: translateX(250px) translateY(0);
-        position: fixed;
-        right: 0;
-        left: 0
-    }
-
     .wrapper {
         transition-duration: .5s;
         width: 100%;
@@ -5350,7 +5346,11 @@ i.iconfont.down {
     }
 
     #mo-nav.open {
-        width: 250px
+        -webkit-transform: translate3d(-100%,0,0);
+        -moz-transform: translate3d(-100%,0,0);
+        -o-transform: translate3d(-100%,0,0);
+        -ms-transform: translate3d(-100%,0,0);
+        transform: translate3d(-100%,0,0);
     }
 
     .wrapper section {
@@ -5377,18 +5377,23 @@ i.iconfont.down {
         transition-duration: .5s;
         width: 100%;
         height: 50px;
-        position: absolute;
+        position: fixed;
         top: 0;
-        z-index: 99999;
+        z-index: 500;
         display: block;
-        background: 0 0
     }
 
     .iconflat {
         background: 0 0;
         width: 50px;
         height: 50px;
-        float: left
+        float: right;
+        font-size: 28px;
+        margin: 2px 0 0 0;
+    }
+
+    .iconflat:hover {
+        cursor: pointer;
     }
 
     .openNav .icon {
@@ -5443,16 +5448,21 @@ i.iconfont.down {
 
     #mo-nav {
         background-color: #FFF;
-        width: 0;
-        max-width: 250px !important;
+        width: 300px;
+        max-width: 300px !important;
         height: 100%;
-        z-index: 999;
-        position: absolute;
+        z-index: 502;
+        position: fixed;
         top: 0;
-        left: 0;
+        right: -300px;
         display: block;
         overflow-x: hidden !important;
-        overflow-y: auto
+        overflow-y: auto;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -o-transition: all .5s;
+        -ms-transition: all .5s;
+        transition: all .5s;
     }
 
     #mo-nav .m-avatar {
@@ -5532,6 +5542,18 @@ i.iconfont.down {
     #mo-nav ul li a:hover {
         cursor: pointer;
         color: orange
+    }
+
+    /* nav mask*/
+    #mo-nav-mask {
+        position: fixed;
+        z-index: 501;
+        display: none;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.8);
     }
 
     .we-content li {
@@ -6522,7 +6544,7 @@ button.botui-actions-buttons-button {
 }
 
 .logolink a {
-    color: #464646;
+    /* color: #464646; */
     float: left;
     font-size: 20px;
     font-weight: 800;
@@ -8255,7 +8277,7 @@ a.toc-link {
 
 .top-feature-v2 {
     display: inline-block;
-    margin: 0 10px 0 10px;
+    margin: 0 25px 0 25px;
 }
 
 .the-feature {
@@ -9235,6 +9257,29 @@ h1[id*=toc-head]::before,h2[id*=toc-head]::before,h3[id*=toc-head]::before,h4[id
 @media (max-width:1200px) {
     #rightside #mobile-toc-button.mobile-toc-show {
         display: block;
+    }
+}
+
+/*#endregion */
+
+/*#region Animation */
+@keyframes fade_in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade_out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
     }
 }
 

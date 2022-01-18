@@ -39,8 +39,11 @@
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 	<div class="openNav no-select">
-		<div class="iconflat no-select">	 
-			<div class="icon"></div>
+		<div id="mo-nav-menu" class="iconflat no-select">
+			<i class="fas fa-bars fa-fw"></i>
+		</div>
+		<div id="mo-nav-search" class="iconflat no-select js-toggle-search">	 
+			<i class="fas fa-search fa-fw"></i>
 		</div>
 		<div class="site-branding">
 			<?php if (akina_option('akina_logo')){ ?>
@@ -51,19 +54,25 @@
 		</div>
 	</div><!-- m-nav-bar -->
 	</section><!-- #section -->
+	
 	<!-- m-nav-center -->
-	<div id="mo-nav">
-		<div class="m-avatar">
-			<?php $ava = akina_option('focus_logo') ? akina_option('focus_logo') : get_template_directory_uri().'/images/avatar.jpg'; ?>
-			<img src="<?php echo $ava ?>">
+	<div id="mo-nav-root">
+		<div id="mo-nav-mask"></div>
+		<div id="mo-nav">
+			<div class="m-avatar">
+				<?php $ava = akina_option('focus_logo') ? akina_option('focus_logo') : get_template_directory_uri().'/images/avatar.jpg'; ?>
+				<img src="<?php echo $ava ?>">
+			</div>
+			<div class="m-search">
+				<form class="m-search-form" method="get" action="<?php echo home_url(); ?>" role="search">
+					<input class="m-search-input" type="search" name="s" placeholder="<?php _e('Search...', 'sakura') /*搜索...*/?>" required>
+				</form>
+			</div>
+			<?php wp_nav_menu( array( 'depth' => 2, 'theme_location' => 'primary', 'container' => false ) ); ?>
 		</div>
-		<div class="m-search">
-			<form class="m-search-form" method="get" action="<?php echo home_url(); ?>" role="search">
-				<input class="m-search-input" type="search" name="s" placeholder="<?php _e('Search...', 'sakura') /*搜索...*/?>" required>
-			</form>
-		</div>
-		<?php wp_nav_menu( array( 'depth' => 2, 'theme_location' => 'primary', 'container' => false ) ); ?>
-	</div><!-- m-nav-center end -->
+	</div>
+	<!-- m-nav-center end -->
+
 	<a class="cd-top faa-float animated "></a>
 	<div id="rightside">
 		<div id="rightside-config-show">

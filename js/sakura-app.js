@@ -1397,19 +1397,45 @@ const FancyAppsAPI = {
     }
 }
 
+//#region Animation
+
+const AnimactionAPI = {
+    fadeIn: (ele, time) => {
+        ele.style.cssText = `display:block;animation: fade_in ${time}s`;
+    },
+
+    fadeOut: (ele, time) => {
+        ele.addEventListener('animationend', function f () {
+            ele.style.cssText = "display: none; animation: '' ";
+            ele.removeEventListener('animationend', f);
+        })
+        ele.style.animation = `fade_out ${time}s`;
+    },
+}
+
+//#endregion
+
 var home = location.href,
     s = $('#bgvideo')[0],
     Siren = {
         MN: function () {
-            $('.iconflat').on('click', function () {
+            $('#mo-nav-menu').on('click', function () {
                 $('body').toggleClass('navOpen');
-                $('#main-container,#mo-nav,.openNav').toggleClass('open');
+                $('#mo-nav,.openNav').toggleClass('open');
+
+                AnimactionAPI.fadeIn($('#mo-nav-mask')[0], 0.5);
+            });
+
+            $('#mo-nav-mask').click(function () {
+                Siren.MNH();
             });
         },
         MNH: function () {
             if ($('body').hasClass('navOpen')) {
                 $('body').toggleClass('navOpen');
-                $('#main-container,#mo-nav,.openNav').toggleClass('open');
+                $('#mo-nav,.openNav').toggleClass('open');
+
+                AnimactionAPI.fadeOut($('#mo-nav-mask')[0], 0.5);
             }
         },
         splay: function () {
@@ -1719,17 +1745,24 @@ var home = location.href,
                 var s = $(document).scrollTop();
                 var $header = $('.site-header');
                 var isDown = scrollDirection(s);
+                
                 if(document.body.clientWidth > 860){
+
+                }else{
+                    $header = $('.openNav');
+                }
+
+                if ($header){
                     if (s == 0) {
                         $header.removeClass('yya');
                     }else{
                         $header.addClass('yya');
                     }
-                }
-                if (isDown){
-                    $header.addClass('nav-fixed');
-                }else{
-                    $header.removeClass('nav-fixed');
+                    if (isDown){
+                        $header.addClass('nav-fixed');
+                    }else{
+                        $header.removeClass('nav-fixed');
+                    }
                 }
             });
         },
