@@ -310,14 +310,18 @@ function the_headPattern(){
     $t .= '<h1 class="entry-title search-title"> '.sprintf( __( "Search results for \" %s \"","sakura" ), get_search_query()) ./*关于“ '.get_search_query().' ”的搜索结果*/'</h1>';
   }
   if(akina_option('patternimg')) $full_image_url = false;
+
   if(!is_home() && $full_image_url) : ?>
-  <div class="pattern-center-blank"></div>
+  <!-- <div class="pattern-center-blank"></div> -->
   <div class="pattern-center <?php if(is_single()){echo $center;} ?>">
     <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.0.1/img/svg/loader/orange.progress-bar-stripe-loader.svg)" data-src="<?php echo $full_image_url; ?>"> </div>
     <header class="pattern-header <?php if(is_single()){echo $header;} ?>"><?php echo $t; ?></header>
   </div>
-  <?php else :
+  <?php elseif (is_single()) : ?>
+    <?php echo '<div id="header-image-blank" class="blank"></div>'; ?>
+  <?php else: 
     echo '<div class="blank"></div>';
+      
   endif;
 }
 

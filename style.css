@@ -1002,7 +1002,7 @@ a:hover {
     position: fixed;
     left: 0;
     background: rgba(255, 255, 255, .95);
-    box-shadow: 0 1px 40px -8px rgba(0, 0, 0, .5)
+    box-shadow: 0 1px 40px -8px rgba(0, 0, 0, .5);
 }
 
 .gizle {
@@ -1011,19 +1011,22 @@ a:hover {
     z-index: 9999
 }
 
-.site-header,
-.site-header a,
-.openNav.yya,
-.openNav.yya a,
-.main-page-header.yya,
-.main-page-header.yya a{
+.yya,
+.yya a{
+    color: #666 !important;
+}
+
+.openNav.header-blank-color,
+.openNav.header-blank-color a,
+header.header-blank-color,
+header.header-blank-color a{
     color: #666;
 }
 
 .openNav,
-.openNav .site-title a,
-.main-page-header,
-.main-page-header a{
+.openNav a,
+header,
+header a{
     color: #eee;
 }
 
@@ -5383,7 +5386,7 @@ i.iconfont.down {
         position: fixed;
         top: 0;
         z-index: 500;
-        display: block;
+        /* display: block; */
     }
 
     .iconflat {

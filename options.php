@@ -1107,7 +1107,7 @@ function optionsframework_options()
         'name' => __('Enable PJAX (recommand on)', 'sakura'), /*开启PJAX局部刷新（建议开启）*/
         'desc' => __('The principle is the same as Ajax', 'sakura'), /*原理与Ajax相同*/
         'id' => 'poi_pjax',
-        'std' => '0',
+        'std' => '1',
         'type' => 'checkbox');
 
     $options[] = array(

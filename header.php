@@ -90,7 +90,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 		</div>	
 		<?php } ?>
 		<div id="page" class="site wrapper">
-			<header class="site-header no-select<?php if(!is_single()){echo ' main-page-header';} ?>" role="banner">
+			<header class="site-header no-select" role="banner">
 				<div class="site-top">
 					<div class="site-branding">
 						<?php if (akina_option('akina_logo')){ ?>

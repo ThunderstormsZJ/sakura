@@ -1560,6 +1560,14 @@ var home = location.href,
                     Siren.livepause();
                 }
             }
+
+            // 处理Header没有头部图片颜色问题
+            if ($('#header-image-blank').length > 0){
+                $('header').addClass("header-blank-color");
+                $('.openNav').addClass("header-blank-color");
+            }
+
+            $(".openNav").addClass('sticky')
         },
         CE: function () {
             $('.comments-hidden').show();
@@ -1746,6 +1754,12 @@ var home = location.href,
                 var s = $(document).scrollTop();
                 var $header = $('.site-header');
                 var isDown = scrollDirection(s);
+
+                if(document.body.clientWidth > 860){
+
+                }else{
+                    $header = $('.openNav');
+                }
                 
                 if (isInit) {
                     isInit = false;
@@ -1754,11 +1768,6 @@ var home = location.href,
                 }
 
                 $header.css({"display": ""});
-                if(document.body.clientWidth > 860){
-
-                }else{
-                    $header = $('.openNav');
-                }
 
                 if ($header){
                     if (s == 0) {
@@ -2106,7 +2115,7 @@ $(function () {
     Siren.MN();
     Siren.IA();
     Siren.LV();
-    if (Poi.pjax) {
+    if (Poi.pjax == 'open') {
         $(document).pjax('a[target!=_top]', '#page', {
             fragment: '#page',
             timeout: 8000,
