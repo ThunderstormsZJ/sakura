@@ -5182,7 +5182,11 @@ i.iconfont.down {
     }
 
     .site-content {
-        padding: 0 4%
+        padding: 0;
+    }
+
+    .site-content .content-area{
+        width: 94%;
     }
 
     .feature img {

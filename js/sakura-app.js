@@ -4,6 +4,9 @@
  * @url https://2heng.xin
  * @date 2019.8.3
  */
+
+const MOBILE_NAV_WIDTH = 860;
+
 mashiro_global.variables = new function () {
     this.has_hls = false;
     this.skinSecter = true;
@@ -1567,7 +1570,10 @@ var home = location.href,
                 $('.openNav').addClass("header-blank-color");
             }
 
-            $(".openNav").addClass('sticky')
+            if (document.body.clientWidth <= MOBILE_NAV_WIDTH) {
+                $(".openNav").addClass('sticky')
+            }
+
         },
         CE: function () {
             $('.comments-hidden').show();
@@ -1741,7 +1747,6 @@ var home = location.href,
         },
         NH: function () {
             var initTop = 0;
-            var isInit = true;
 
             // find the scroll direction
             function scrollDirection (currentTop) {
@@ -1750,28 +1755,26 @@ var home = location.href,
                 return result
             }
 
-            $(window).scroll(function () {
-                var s = $(document).scrollTop();
+            function getHeader (){
                 var $header = $('.site-header');
-                var isDown = scrollDirection(s);
-
-                if(document.body.clientWidth > 860){
+                if(document.body.clientWidth > MOBILE_NAV_WIDTH){
 
                 }else{
                     $header = $('.openNav');
                 }
-                
-                if (isInit) {
-                    isInit = false;
-                    $header.css({"display": "none"});
-                    return;
-                }
 
-                $header.css({"display": ""});
+                return $header;
+            }
+
+            $(window).scroll(function () {
+                var s = $(document).scrollTop();
+                var $header = getHeader();
+                var isDown = scrollDirection(s);
 
                 if ($header){
                     if (s == 0) {
                         $header.removeClass('yya');
+                        $header.removeClass('nav-fixed');
                     }else{
                         $header.addClass('yya');
                     }
@@ -1782,6 +1785,12 @@ var home = location.href,
                     }
                 }
             });
+
+            var $header = getHeader();
+            var s = $(document).scrollTop();
+            if (s == 0) {
+                $header.removeClass('nav-fixed');
+            }
         },
         XLS: function () {
             $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');

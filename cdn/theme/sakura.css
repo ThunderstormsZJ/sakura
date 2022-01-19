@@ -106,15 +106,15 @@ h6 {
     content: "\f0c1";
 }
 
-.entry-content h3, .entry-content h4, .entry-content h5 {
+/* .entry-content h3, .entry-content h4, .entry-content h5 {
     padding-left: 16px;
-}
+} */
 
-.entry-content h3 {
+/* .entry-content h3 {
     padding-bottom: 8px;
     border-bottom: 1px dashed #ddd;
     color: #737373
-}
+} */
 
 .entry-content code {
     background: rgba(27,31,35,.05);
@@ -214,6 +214,22 @@ body.dark .entry-content tr:nth-child(even) {
 
 .entry-content pre th {
     background-color: transparent !important;
+}
+
+.entry-content .kb-btn {
+    margin: 0 3px;
+    padding: 3px 5px;
+    border: 1px solid #b4b4b4;
+    border-radius: 3px;
+    background-color: #f8f8f8;
+    -webkit-box-shadow: 0 1px 3px rgb(0 0 0 / 25%), 0 2px 1px 0 rgb(255 255 255 / 60%) inset;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 25%), 0 2px 1px 0 rgb(255 255 255 / 60%) inset;
+    color: #34495e;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: .9em;
+    font-family: Monaco,'Ubuntu Mono',monospace;
+    line-height: 1em;
 }
 
 .highlight-wrap:before {
