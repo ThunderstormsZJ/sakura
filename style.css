@@ -12,8 +12,6 @@ Text Domain: sakura
 Tags: 樱花庄的白猫
 */
 
-@import url(tagstyle.css);
-
 #content {
     animation: main 1s
 }
