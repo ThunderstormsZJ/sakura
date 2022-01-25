@@ -96,7 +96,6 @@ html {
 
 body {
     margin: 0;
-    font: 300 17px;
     text-shadow: 0 0 1px rgba(0, 0, 0, .1)
 }
 
@@ -2673,16 +2672,6 @@ h3#comments-list-title {
     margin-right: auto
 }
 
-.entry-content a img.aligncenter,
-.entry-content a img.alignleft,
-.entry-content a img.alignright {
-    cursor: -webkit-zoom-in
-}
-
-#baguetteBox-overlay .full-image {
-    cursor: -webkit-zoom-out
-}
-
 #baguetteBox-overlay .full-image figcaption,
 #baguetteBox-overlay .full-image img {
     cursor: auto
@@ -2912,7 +2901,7 @@ span.time {
 .ar-time {
     position: absolute;
     left: -18px;
-    top: px;
+    top: 0;
     margin-top: 3px
 }
 
@@ -3933,7 +3922,7 @@ li.feature-2 {
 }
 
 @supports (-webkit-touch-callout: none) {
-    #centerbg: {
+    #centerbg {
         background-attachment: scroll !important;
     }
 }
@@ -6389,8 +6378,9 @@ body.dark .user-menu-option a:hover {
     animation: loading .6s .1s linear infinite
 }
 
-@keyframes loading {
-    0 {
+@keyframes loading
+{
+    0% {
         transform: translate(0, 0);
         background-color: #ababab
     }
@@ -7413,7 +7403,6 @@ input[type=radio]:checked:before {
 .finish-icon-container {
     font-size: 1rem;
     display: -webkit-box;
-    display: box;
     display: -webkit-flex;
     display: flex;
     -webkit-box-align: center;
@@ -7778,7 +7767,7 @@ a.toc-link {
     -webkit-transform: scaleX(-1);
     -o-transform: scaleX(-1);
     transform: scaleX(-1);
-    filter: FlipH
+    filter: flipH();
 }
 
 .flipy {
@@ -7786,7 +7775,7 @@ a.toc-link {
     -webkit-transform: scaleY(-1);
     -o-transform: scaleY(-1);
     transform: scaleY(-1);
-    filter: FlipV
+    filter: flipV();
 }
 
 .flipx-v2 {
@@ -8473,8 +8462,8 @@ a.toc-link {
 }
 
 .highlight-wrap code::-webkit-scrollbar {
-    height: 10x !important;
-    width: 10x !important;
+    height: 10px !important;
+    width: 10px !important;
     background-color: #1d1f21 !important
 }
 
@@ -8706,8 +8695,8 @@ td.hljs-ln-numbers {
     width: 220px;
     border-radius: 8px;
     background: hsla(0,0%,100%,0.97);
-    box-shadow: 0 3px 8px 6px rgb(7 17 27 / 5%);
-    -webkit-box-shadow: 0 3px 8px 6px rgb(7 17 27 / 5%);
+    box-shadow: 0 3px 8px 6px rgb(7 17 27);
+    -webkit-box-shadow: 0 3px 8px 6px rgb(7 17 27);
     z-index: 100;
     font-family: Ubuntu, sans-serif;
     opacity: 0;
