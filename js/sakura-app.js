@@ -19,7 +19,7 @@ mashiro_global.ini = new function () {
         lazyload();
         social_share();
         post_list_show_animation();
-        copy_code_block();
+        // copy_code_block();
         coverVideoIni();
         checkskinSecter();
         scrollBar();
@@ -29,7 +29,7 @@ mashiro_global.ini = new function () {
         pjaxInit();
         social_share();
         post_list_show_animation();
-        copy_code_block();
+        // copy_code_block();
         coverVideoIni();
         checkskinSecter();
         load_bangumi();
@@ -173,7 +173,7 @@ function code_highlight_style() {
     });
 }
 try {
-    code_highlight_style();
+    // code_highlight_style();
 } catch (e) {}
 
 if (Poi.reply_link_version == 'new') {
@@ -673,7 +673,7 @@ var pjaxInit = function () {
     mashiro_global.font_control.ini();
     $("p").remove(".head-copyright");
     try {
-        code_highlight_style();
+        // code_highlight_style();
     } catch (e) {};
     try {
         getqqinfo();
@@ -1888,7 +1888,7 @@ var home = location.href,
                         }
                         t.createButterbar("提交成功(Succeed)");
                         lazyload();
-                        code_highlight_style();
+                        // code_highlight_style();
                         click_to_view_image();
                         clean_upload_images();
                         cancel.style.display = 'none';
@@ -1990,7 +1990,7 @@ var home = location.href,
                                 'page_path': path
                             });
                         }
-                        code_highlight_style();
+                        // code_highlight_style();
                         click_to_view_image();
                     }
                 });
@@ -2145,9 +2145,6 @@ $(function () {
             if (mashiro_option.NProgressON) NProgress.done();
             mashiro_global.ini.pjax();
             $("#loading").fadeOut(500);
-            if (Poi.codelamp == 'open') {
-                self.Prism.highlightAll(event)
-            };
             if ($('.ds-thread').length > 0) {
                 if (typeof DUOSHUO !== 'undefined') {
                     DUOSHUO.EmbedThread('.ds-thread');
